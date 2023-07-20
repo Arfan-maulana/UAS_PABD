@@ -33,8 +33,8 @@
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.inputObatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataPelangganToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.dataApotekerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,16 +66,23 @@
             // inputObatToolStripMenuItem
             // 
             this.inputObatToolStripMenuItem.Name = "inputObatToolStripMenuItem";
-            this.inputObatToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.inputObatToolStripMenuItem.Size = new System.Drawing.Size(238, 34);
             this.inputObatToolStripMenuItem.Text = "Input Obat";
             this.inputObatToolStripMenuItem.Click += new System.EventHandler(this.inputObatToolStripMenuItem_Click);
             // 
             // dataPelangganToolStripMenuItem
             // 
             this.dataPelangganToolStripMenuItem.Name = "dataPelangganToolStripMenuItem";
-            this.dataPelangganToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.dataPelangganToolStripMenuItem.Size = new System.Drawing.Size(238, 34);
             this.dataPelangganToolStripMenuItem.Text = "Data Pelanggan";
             this.dataPelangganToolStripMenuItem.Click += new System.EventHandler(this.dataPelangganToolStripMenuItem_Click);
+            // 
+            // dataApotekerToolStripMenuItem
+            // 
+            this.dataApotekerToolStripMenuItem.Name = "dataApotekerToolStripMenuItem";
+            this.dataApotekerToolStripMenuItem.Size = new System.Drawing.Size(238, 34);
+            this.dataApotekerToolStripMenuItem.Text = "Data Apoteker";
+            this.dataApotekerToolStripMenuItem.Click += new System.EventHandler(this.dataApotekerToolStripMenuItem_Click);
             // 
             // toolStripButton1
             // 
@@ -86,17 +93,11 @@
             this.toolStripButton1.Size = new System.Drawing.Size(34, 29);
             this.toolStripButton1.Text = "toolStripButton1";
             // 
-            // dataApotekerToolStripMenuItem
-            // 
-            this.dataApotekerToolStripMenuItem.Name = "dataApotekerToolStripMenuItem";
-            this.dataApotekerToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
-            this.dataApotekerToolStripMenuItem.Text = "Data Apoteker";
-            this.dataApotekerToolStripMenuItem.Click += new System.EventHandler(this.dataApotekerToolStripMenuItem_Click);
-            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1597, 828);
             this.Controls.Add(this.toolStrip1);
             this.Name = "MainMenu";
