@@ -47,11 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DATA\DataApoteker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DATA\DataApoteker.Designer.cs">
+      <DependentUpon>DataApoteker.cs</DependentUpon>
+    </Compile>
     <Compile Include="DATA\DataObat.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DATA\DataObat.Designer.cs">
       <DependentUpon>DataObat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DATA\DataPelanggan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DATA\DataPelanggan.Designer.cs">
+      <DependentUpon>DataPelanggan.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -67,8 +79,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DATA\DataApoteker.resx">
+      <DependentUpon>DataApoteker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DATA\DataObat.resx">
       <DependentUpon>DataObat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DATA\DataPelanggan.resx">
+      <DependentUpon>DataPelanggan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

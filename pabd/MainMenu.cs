@@ -24,5 +24,20 @@ namespace pabd
             DO.Show();
             this.Hide();
         }
+
+        private void dataPelangganToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataPelanggan DP = new DataPelanggan ();
+            DP.Show();
+            this.Hide();
+        }
+
+        private void dataApotekerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataApoteker DA= new DataApoteker();
+            DA.Show();
+            this.Hide();
+
+        }
     }
 }

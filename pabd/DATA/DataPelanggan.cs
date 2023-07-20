@@ -8,31 +8,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace pabd.DATA
 {
-    public partial class DataObat : Form
-
+    public partial class DataPelanggan : Form
     {
         SqlConnection conn = new SqlConnection(@"data source = LAPTOP-M7MD7ENC\ARFAN_MAULANA;initial catalog = ApotikNEW;Integrated Security=True");
-        public DataObat()
+        public DataPelanggan()
         {
             InitializeComponent();
         }
-
         private void refreshform()
         {
             textBox1.Clear();
             textBox2.Clear();
-            textBox3.Clear();
+            comboBox1.DataSource = null;
             textBox4.Clear();
             textBox1.Focus();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MainMenu MM = new MainMenu();
+            MM.Show();
+            this.Hide();
         }
         private void Lihatdata()
         {
             conn.Open();
-            string str = "select * from dbo.Obat";
+            string str = "select * from dbo.Pelanggan";
             SqlDataAdapter da = new SqlDataAdapter(str, conn);
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -42,7 +47,7 @@ namespace pabd.DATA
         private void Add_Click(object sender, EventArgs e)
         {
             conn.Open();
-            SqlCommand check = new SqlCommand("select ID_Obat from dbo.Obat Where ID_Obat = '" + (textBox1.Text) + "'", conn);
+            SqlCommand check = new SqlCommand("select ID_Pelanggan from dbo.Pelanggan Where ID_pelanggan = '" + (textBox1.Text) + "'", conn);
             SqlDataAdapter da = new SqlDataAdapter(check);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -51,20 +56,19 @@ namespace pabd.DATA
             {
                 MessageBox.Show("Data sudah ada", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox3.Text) || string.IsNullOrEmpty(textBox4.Text))
+            else if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(comboBox1.Text) || string.IsNullOrEmpty(textBox4.Text))
             {
                 MessageBox.Show("Data tidak lengkap", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("insert into dbo.Obat (ID_Obat,Nama_Obat,Harga_obat,stok_obat,jenis_obat)values(@ID,@Nama,@harga,@stok,@jenis)", conn);
+                SqlCommand cmd = new SqlCommand("insert into dbo.Pelanggan (ID_Pelanggan,Nama_Pelanggan,Jenis_Kelamin,Alamat_Pelanggan)values(@ID,@Nama,@jenis,@Alamat)", conn);
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.Add(new SqlParameter("@ID", textBox1.Text.ToString()));
                 cmd.Parameters.Add(new SqlParameter("@Nama", textBox2.Text.ToString()));
-                cmd.Parameters.Add(new SqlParameter("@harga", textBox3.Text.ToString()));
-                cmd.Parameters.Add(new SqlParameter("@stok", textBox4.Text.ToString()));
                 cmd.Parameters.Add(new SqlParameter("@jenis", comboBox1.Text.ToString()));
+                cmd.Parameters.Add(new SqlParameter("@Alamat", textBox4.Text.ToString()));
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
@@ -73,11 +77,17 @@ namespace pabd.DATA
             }
         }
 
-      
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox4.Clear();
+        }
+
         private void Delete_Click(object sender, EventArgs e)
         {
             conn.Open();
-            SqlCommand check = new SqlCommand("select ID_Obat from dbo.Obat Where ID_Obat = '" + (textBox1.Text) + "'", conn);
+            SqlCommand check = new SqlCommand("select ID_Pelanggan from dbo.Pelanggan Where ID_Pelanggan = '" + (textBox1.Text) + "'", conn);
             SqlDataAdapter da = new SqlDataAdapter(check);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -91,7 +101,7 @@ namespace pabd.DATA
                 if (MessageBox.Show("Apakah anda yakin ingin menghapus data ini?", "Delete Record", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("delete dbo.Obat where ID_Obat= '" + (textBox1.Text) + "'", conn);
+                    SqlCommand cmd = new SqlCommand("delete dbo.Pelanggan where ID_Pelanggan= '" + (textBox1.Text) + "'", conn);
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("Data Berhasil dihapus");
@@ -107,16 +117,16 @@ namespace pabd.DATA
 
         private void Update_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(textBox3.Text) || string.IsNullOrEmpty(textBox4.Text) || string.IsNullOrEmpty( comboBox1.Text))
+            if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(comboBox1.Text) || string.IsNullOrEmpty(textBox4.Text))
             {
                 MessageBox.Show("Data tidak lengkap", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                if (MessageBox.Show("Apakah anda yakin ingin mengupdate data ini?", "Update Record", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Apakah anda yakin ingin mengupdate data ini?", "Delete Record", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("update dbo.Obat set Nama_Obat = '" + textBox2.Text + "',Harga_obat = '" + textBox3.Text + "',stok_obat='" + textBox4.Text + "',jenis_obat= '" + comboBox1.Text + "'where ID_Obat = '" + (textBox1.Text) + "'", conn);
+                    SqlCommand cmd = new SqlCommand("update dbo.Pelanggan set Nama_Pelanggan = '" + textBox2.Text + "',jenis_kelamin = '" + comboBox1.Text + "',Alamat_Pelanggan='" + "'where ID_Pelanggan = '" + (textBox1.Text) + "'", conn);
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("Data Berhasil diupdate");
@@ -129,7 +139,7 @@ namespace pabd.DATA
         private void Search_Click(object sender, EventArgs e)
         {
             conn.Open();
-            SqlCommand check = new SqlCommand("select ID_Obat from dbo.Obat Where ID_Obat = '" + (textBox1.Text) + "'", conn);
+            SqlCommand check = new SqlCommand("select ID_Pelanggan from dbo.Pelanggan Where ID_Pelanggan = '" + (textBox1.Text) + "'", conn);
             SqlDataAdapter sda = new SqlDataAdapter(check);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -141,7 +151,7 @@ namespace pabd.DATA
             else if (textBox1.Text != "")
             {
                 conn.Open();
-                string str = "select * from dbo.Obat Where ID_obat = '" + (textBox1.Text) + "'";
+                string str = "select * from dbo.Pelanggan Where ID_pelanggan = '" + (textBox1.Text) + "'";
                 SqlDataAdapter da = new SqlDataAdapter(str, conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -154,89 +164,19 @@ namespace pabd.DATA
                 MessageBox.Show("ISI ID_kondisi yang akan dicari");
             }
         }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-                textBox1.Text = row.Cells["ID_Obat"].Value.ToString();
-                textBox2.Text = row.Cells["Nama_Obat"].Value.ToString();
-                textBox3.Text = row.Cells["harga_Obat"].Value.ToString();
-                textBox4.Text = row.Cells["stok_Obat"].Value.ToString();
-                comboBox1.Text = row.Cells["Jenis_obat"].Value.ToString();
+                textBox1.Text = row.Cells["ID_pelanggan"].Value.ToString();
+                textBox2.Text = row.Cells["Nama_pelanggan"].Value.ToString();
+                comboBox1.Text = row.Cells["kenis_kelamin"].Value.ToString();
+                textBox4.Text = row.Cells["Alamat_Pelanggan"].Value.ToString();
+              
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            MainMenu MM = new MainMenu();
-            MM.Show();
-            this.Hide();
-        }
-
-        private void Clear_Click(object sender, EventArgs e)
-        {
-        textBox1.Clear();
-        textBox2.Clear();
-        textBox3.Clear();
-        textBox4.Clear();
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DataObat_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+
