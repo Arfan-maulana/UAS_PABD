@@ -46,5 +46,12 @@ namespace pabd
             DK.Show();
             this.Hide();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form1 Fm = new Form1();
+            Fm.Show();
+            this.Hide();
+        }
     }
 }

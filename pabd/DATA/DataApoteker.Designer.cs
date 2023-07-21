@@ -173,7 +173,7 @@
             // Add
             // 
             this.Add.AutoSize = true;
-            this.Add.Location = new System.Drawing.Point(378, 452);
+            this.Add.Location = new System.Drawing.Point(369, 452);
             this.Add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(120, 62);

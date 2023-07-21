@@ -52,7 +52,7 @@ namespace pabd.DATA
             }
             else if (string.IsNullOrEmpty(textBox1.Text) || string.IsNullOrEmpty(textBox2.Text) || string.IsNullOrEmpty(comboBox1.Text) || string.IsNullOrEmpty(textBox3.Text) || string.IsNullOrEmpty(textBox4.Text))
             {
-                MessageBox.Show("Data tidak lengkap", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Datanya isi yang bener idiot", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
