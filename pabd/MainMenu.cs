@@ -39,5 +39,12 @@ namespace pabd
             this.Hide();
 
         }
+
+        private void dataKaryawanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataKaryawan DK = new DataKaryawan();
+            DK.Show();
+            this.Hide();
+        }
     }
 }

@@ -53,6 +53,12 @@
     <Compile Include="DATA\DataApoteker.Designer.cs">
       <DependentUpon>DataApoteker.cs</DependentUpon>
     </Compile>
+    <Compile Include="DATA\DataKaryawan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DATA\DataKaryawan.Designer.cs">
+      <DependentUpon>DataKaryawan.cs</DependentUpon>
+    </Compile>
     <Compile Include="DATA\DataObat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DATA\DataApoteker.resx">
       <DependentUpon>DataApoteker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DATA\DataKaryawan.resx">
+      <DependentUpon>DataKaryawan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DATA\DataObat.resx">
       <DependentUpon>DataObat.cs</DependentUpon>
